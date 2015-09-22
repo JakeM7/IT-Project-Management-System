@@ -1,0 +1,61 @@
+﻿@model ITProjectResourceManagement.Models.ViewModelProjectEmployee
+
+
+@{
+    ViewBag.Title = "employeesPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head {
+    
+}
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div class="row">
+
+    <div class="col-xs-10" id="leftRequest">
+            
+        @foreach (var p in Model.allProjects)
+        {
+            <h3>Selected project: <b>@p.Name</b></h3>
+            <h3>Description: <b>@p.Descrip</b></h3>
+            <h3>Category: <b>@p.Category.Name</b></h3>
+
+            int x = p.ProjectID;
+
+
+            <h1>Employees</h1>
+            <table class="table table-hover">
+                <tr>
+                    <td>Employee ID</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Specialty</td>
+                    <td></td>
+                </tr>
+                @foreach (var e in Model.allEmployees)
+            {
+                    <tr>
+                        <td>@e.EmployeeID</td>
+                        <td>@e.FName</td>
+                        <td>@e.LName</td>
+
+                        <td><a href="@Url.Action("addEmployees", new { id = e.EmployeeID})" >Add Employee to Project </a></td>
+                        
+                    </tr>
+                }
+            </table>
+        }
+        <div>
+            @Html.ActionLink("Back to All Projects", "projectsPage")
+        </div>
+        </div>
+    <div class="col-xs-2">
+
+    </div>
+
+    </div>
+
+</body>
+</html>

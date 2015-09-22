@@ -1,0 +1,143 @@
+﻿@model ITProjectResourceManagement.Models.ViewModelTrackProjEmpl
+
+@{
+    ViewBag.Title = "Tracker";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head {
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    }
+@section scripts {
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script>
+        /*
+        $(function () {
+            $("#progressbar").progressbar({
+                value: (0)
+            });
+            $("button").on("click", function (event) {
+                var target = $(event.target),
+                  progressbar = $("#progressbar"),
+                  progressbarValue = progressbar.find(".ui-progressbar-value");
+
+                if (target.is("#step1")) {
+                    var val=.20
+                    progressbar.progressbar("option", {
+                        value: Math.floor(val * 100)
+                    });
+                    $('#S1').hide();
+                }
+                else if (target.is("#step2")) {
+                    var val=.40
+                    progressbar.progressbar("option", {
+                        value: Math.floor(val * 100)
+                    });
+                    $('#S1').hide();
+                    $('#S2').hide();
+                }
+                else if (target.is("#step3")) {
+                    var val=.60
+                    progressbar.progressbar("option", {
+                        value: Math.floor(val * 100)
+                    });
+                    $('#S1').hide();
+                    $('#S2').hide();
+                    $('#S3').hide();
+                }
+                else if (target.is("#step4")) {
+                    var val=.80
+                    progressbar.progressbar("option", {
+                        value: Math.floor(val * 100)
+
+                    });
+                    $('#S1').hide();
+                    $('#S2').hide();
+                    $('#S3').hide();
+                    $('#S4').hide();
+                }
+                else if (target.is("#step5")) {
+                    var val=1
+                    progressbar.progressbar("option", {
+                        value: Math.floor(val * 100)
+
+                    });
+                    $('#S1').hide();
+                    $('#S2').hide();
+                    $('#S3').hide();
+                    $('#S4').hide();
+                    $('#S5').hide();
+                }
+                else if (target.is("#clear")) {
+                    var val=0
+                    progressbar.progressbar("option", {
+                        value: Math.floor(val * 100)
+                        
+                    });
+                    $('#S1').show();
+                    $('#S2').show();
+                    $('#S3').show();
+                    $('#S4').show();
+                    $('#S5').show();
+                }
+
+                else if (target.is("#show")) {
+                    progressbar.progressbar("option", {
+                        value: Math.floor(0 * 100)
+
+                    });
+
+                }
+                });
+        });
+        */
+    </script>
+}
+<html>
+<body>
+    <div class="row">
+        <div class="col-xs-7">
+            <h1>Your Request Tracker</h1>
+            <br />
+
+            <!--
+            <div id="progressbar"></div>
+            <br />
+            <br />
+                <div><button id="show">Show Status</button><hr /></div>
+                <div><button id="clear">Start Over</button><hr /></div>
+                <div id="S1"><button id="step1">Step 1</button><h4>The requirements are recieved and analyzed</h4><hr /></div>
+                <div id="S2"><button id="step2">Step 2</button><h4>A design for the project is created</h4><hr /></div>
+                <div id="S3"><button id="step3">Step 3</button><h4>Initial code is finished</h4><hr /></div>
+                <div id="S4"><button id="step4">Step 4</button><h4>The software was tested and it passed</h4><hr /></div>
+                <div id="S5"><button id="step5">Step 5</button><h4>The project is finished and will continue to be maintained</h4><hr /></div>
+           -->
+            <div>
+                <a href="@Url.Action("progressPage", new { id = Model.track.FirstOrDefault().ID })">See Tracker </a>
+            </div>
+
+        </div>
+        <div class="col-xs-4">
+            @foreach (var p in Model.allProj)
+            {
+                foreach (var t in Model.track)
+                {
+                    <h3>Your Ticket ID: <b>@t.ID</b></h3>
+                }
+                <h3>Your Project: <b>@p.Name</b></h3>
+                <h3>Employees working on project:</h3>
+                foreach (var e in Model.allEmpl)
+                {
+                    <h3>
+                        First: <b>@e.FName</b> Last: <b>@e.LName</b>
+                    </h3>
+                }
+            }
+            <div>
+                @Html.ActionLink("Back to All Projects", "projectsPage")
+            </div>
+        </div>
+    </div>
+</body>
+</html>

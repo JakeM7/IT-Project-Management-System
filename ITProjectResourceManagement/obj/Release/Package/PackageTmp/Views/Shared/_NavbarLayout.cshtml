@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("head")
+    <!--Using Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        li:hover{
+            font-weight:bold; 
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <!--container for nav bar-->
+            <div class="navbar-header">
+                <div class="navbar-brand">Company NAMEEEEEE</div>
+            </div>
+            <!--took away collapse class here-->
+            <ul class="nav navbar-nav">
+                <li>
+                    @Html.ActionLink("Home", "Welcome")
+                    <!--<a href="Welcome.html">Home</a>-->
+                </li>
+                <li>
+                    <a href="Order.html">About Us</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @Html.Partial("_LoginPartial")
+                </li>
+                <li>
+                    <a href="Site_map.html">Site Map</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+
+    @RenderSection("scripts")
+</body>
+</html>

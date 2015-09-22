@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="ProjectDB-Web.config Connection String" description="ProjectDB Connection String used in web.config by the application to access the database." defaultValue="Data Source=jake\sqlexpress;Initial Catalog=ITProject1;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Jake\\Desktop\\Eintern\\IT\ Project\ Resource\ Management\\ITProjectResourceManagement\\ITProjectResourceManagement\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ProjectDB']/@connectionString" />
+  </parameter>
+  <parameter name="ITProjectEntities-Web.config Connection String" description="ITProjectEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=jake\sqlexpress;initial catalog=ITProject;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Jake\\Desktop\\Eintern\\IT\ Project\ Resource\ Management\\ITProjectResourceManagement\\ITProjectResourceManagement\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ITProjectEntities']/@connectionString" />
+  </parameter>
+  <parameter name="ITProject1Entities-Web.config Connection String" description="ITProject1Entities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=jake\sqlexpress;initial catalog=ITProject1;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Jake\\Desktop\\Eintern\\IT\ Project\ Resource\ Management\\ITProjectResourceManagement\\ITProjectResourceManagement\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ITProject1Entities']/@connectionString" />
+  </parameter>
+</parameters>

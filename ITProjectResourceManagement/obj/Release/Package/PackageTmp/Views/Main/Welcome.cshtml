@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Welcome";
+    Layout = "~/Views/Shared/_NavbarLayout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container" id="Main">
+        <!--main container for everything but nav bar-->
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-xs-8" id="leftJumbo">
+                    <img src="~/Content/welcome.png" width=80% alt="Computer vector designed by Freepik" />
+                </div>
+                <div class="col-xs-4" id="rightJumbo">
+                    <div class="container">
+                        <h2 style="text-align:left">Welcome</h2>
+
+                        <p style="font-size:100%; text-align:center">There to track your project's progress every step of the way</p>
+                        <!--PICTURE OF LOGO AND MOTTO GOES HERE-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6" id="left">
+                <form action="/Main/projectsPage" method="get">
+                    @Html.AntiForgeryToken()
+
+                    <h1>Login</h1>
+                    <div class="form-group">
+                        <label for="username" class="control-label">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Login" id="login">
+                    </div>
+                </form>
+                
+            </div>
+            <div class="col-xs-6" id="right">
+               <form action="/Main/projectsPage" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <h1>Sign up</h1>
+                    <div class="form-group">
+                        <label for="fName" class="control-label">First Name:</label>
+                        <input type="text" class="form-control" id="fName" name="fName" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lName" class="control-label">Last Name:</label>
+                        <input type="text" class="form-control" id="lName" name="lName" />
+                    </div>
+                    <div class="form-group">
+                        <label for="createUsername" class="control-label">Create Username:</label>
+                        <input type="text" class="form-control" id="createUsername" name="createUsername" />
+                    </div>
+                    <div class="form-group">
+                        <label for="createPassword" class="control-label">Create Password:</label>
+                        <input type="password" class="form-control" id="createPassword" name="createPassword" />
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" class="control-label">Confirm Password:</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="control-label">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email " />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Sign Up" id="signUp">
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

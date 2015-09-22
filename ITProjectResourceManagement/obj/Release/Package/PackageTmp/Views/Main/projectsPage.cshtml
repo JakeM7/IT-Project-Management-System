@@ -1,0 +1,81 @@
+﻿@model ITProjectResourceManagement.Models.ViewModelProjectsUnassignedEmp
+
+@{
+    ViewBag.Title = "projectsPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head {
+    
+}
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-7" id="leftRequest">
+            <h1>Projects</h1>
+            <table class="table table-hover">
+                <tr>
+                    <td>Project ID</td>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>Category</td>
+                    <td></td>
+                </tr>
+                @foreach (var p in Model.allProjects)
+                {
+                    if (p.ProjectID != 0)
+                    {
+                        <tr>
+                            <td>@p.ProjectID</td>
+                            <td>@p.Name</td>
+                            <td>@p.Descrip</td>
+                            <td>@p.Category.Name</td>
+                            <td>@if (User.IsInRole("Admin"))
+                                {
+                                @:<a href = "@Url.Action("employeesPage", new { id = p.ProjectID })" > Assign Employees </a > | 
+                                                                                                                              }
+                            <a href="@Url.Action("Tracker", new { id = p.ProjectID })">Tracker</a></td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+        <div class="col-xs-4">
+            <img src="~/Content/ITrequest.png" width=100% alt="Computer vector designed by Freepik" />
+            <br />
+            <h2>Unassigned Employees</h2>
+
+            <table class="table table-hover">
+                <tr>
+                    <td>Employee ID</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td></td>
+                </tr>
+                @foreach (var e in Model.allEmployees)
+            {
+                    <tr>
+                        <td>@e.EmployeeID</td>
+                        <td>@e.FName</td>
+                        <td>@e.LName</td>
+
+                        <td>@if (User.IsInRole("Admin"))
+                        {
+                            @:<a href="@Url.Action("addEmployees", new { id = e.EmployeeID })">Add Employee to Project </a>
+                            }</td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+@if (User.IsInRole("user"))
+{
+    <h5>Must be an Administrator to add employees</h5>
+}
+</body>
+</html>

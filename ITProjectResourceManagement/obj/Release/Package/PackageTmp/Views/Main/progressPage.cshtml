@@ -1,0 +1,106 @@
+﻿@model ITProjectResourceManagement.Models.Tracker
+
+@{
+    ViewBag.Title = "progressPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head {
+
+}
+<h2>Tracker</h2>
+
+<html>
+
+<body>
+    <div class="row">
+        <div class="col-xs-7">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                if (User.IsInRole("Admin"))
+                {
+
+
+                <div class="form-horizontal">
+
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ID)
+
+                    <div class="form-group">
+                       
+                        <div class="col-md-10">
+                            @Html.RadioButtonFor(model => model.Value, "0") <div><h4><b>Step 0 </b>Start Over</h4><hr /></div>
+                            @Html.RadioButtonFor(model => model.Value, "1") <div id="S1"><h4><b>Step 1 </b>The requirements are recieved and analyzed</h4><hr /></div>
+                            @Html.RadioButtonFor(model => model.Value, "2") <div id="S2"><h4><b>Step 2 </b>A design for the project is created</h4><hr /></div>
+                            @Html.RadioButtonFor(model => model.Value, "3") <div id="S3"><h4><b>Step 3 </b>Initial code is finished</h4><hr /></div>
+                            @Html.RadioButtonFor(model => model.Value, "4") <div id="S4"><h4><b>Step 4 </b>The software was tested and it passed</h4><hr /></div>
+                            @Html.RadioButtonFor(model => model.Value, "5") <div id="S5"><h4><b>Step 5 </b>The project is finished and will continue to be maintained</h4><hr /></div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+                    }
+                else 
+                {
+                    <h3>Must be an administrator to edit the progess of a project</h3>
+                }
+            }
+       
+
+            <div>
+                @Html.ActionLink("Back to Projects", "projectsPage")
+            </div>
+        </div>
+        <div class="col-xs-4"> <!--Put tracker image here-->
+        @if (Model.Value == 0)
+        {
+            <img src="~/Content/Step0.png">
+            <h3>Project has not yet been started</h3>
+            <h3>0% complete</h3>
+        }
+        @if (Model.Value == 1)
+            {
+                <img src="~/Content/Step1.png">
+            <h3>The requirements are recieved and analyzed</h3>
+            <h3>20% completed</h3>
+            }
+       @if (Model.Value == 2)
+            {
+                <img src="~/Content/Step2.png">
+           <h3>A design for the project is created</h3>
+            <h3>40% completed</h3>
+       }
+       @if (Model.Value == 3)
+            {
+                <img src="~/Content/Step3.png">
+           <h3>Initial code is finished</h3>
+            <h3>60% completed</h3>
+       }
+       @if (Model.Value == 4)
+            {
+                <img src="~/Content/Step4.png">
+           <h3>The software was tested and it passed</h3>
+            <h3>80% completed</h3>
+       }
+       @if (Model.Value == 5)
+            {
+                <img src="~/Content/Step5.png">
+           <h3>Your project is complete</h3>
+            }
+       </div>
+    </div>
+    </body>
+</html>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
